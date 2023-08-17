@@ -1,0 +1,8 @@
+- gcloud
+  - https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run?hl=ja
+  - https://cloud.google.com/build/docs/building/store-artifacts-in-artifact-registry?hl=ja
+  - https://cloud.google.com/run/docs/authenticating/public?hl=ja
+  - gcloud services enable cloudbuild.googleapis.com
+  - gcloud services enable artifactregistry.googleapis.com
+  - gcloud services enable run.googleapis.com
+  - gcloud artifacts repositories create next-server-repository --repository-format=docker --location=asia-northeast1
