@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "gcp:set": "gcloud config set project ssr-sandbox-395901",
-    "deploy:next": "gcloud builds submit",
+    "deploy:next:prod": "gcloud builds submit --substitutions=_PROJECT_ID=ssr-sandbox-395901,_DOT_ENV_PATH=./env/.env.prod",
+    "deploy:next:stag": "gcloud builds submit --substitutions=_PROJECT_ID=ssr-sandbox-395901,_DOT_ENV_PATH=./env/.env.stag",
     "deploy:hosting": "firebase deploy"
   },
   "dependencies": {

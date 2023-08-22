@@ -4,7 +4,9 @@ steps:
       [
         "build",
         "-t",
-        "asia-northeast1-docker.pkg.dev/ssr-sandbox-395901/next-server-repository/next-server-image",
+        "asia-northeast1-docker.pkg.dev/$_PROJECT_ID/next-server-repository/next-server-image",
+        "--build-arg",
+        "_DOT_ENV_PATH=$_DOT_ENV_PATH",
         ".",
       ]
 
@@ -12,7 +14,7 @@ steps:
     args:
       [
         "push",
-        "asia-northeast1-docker.pkg.dev/ssr-sandbox-395901/next-server-repository/next-server-image",
+        "asia-northeast1-docker.pkg.dev/$_PROJECT_ID/next-server-repository/next-server-image",
       ]
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -23,10 +25,10 @@ steps:
         "deploy",
         "next-server",
         "--image",
-        "asia-northeast1-docker.pkg.dev/ssr-sandbox-395901/next-server-repository/next-server-image",
+        "asia-northeast1-docker.pkg.dev/$_PROJECT_ID/next-server-repository/next-server-image",
         "--region",
         "asia-northeast1",
       ]
 
 images:
-  - asia-northeast1-docker.pkg.dev/ssr-sandbox-395901/next-server-repository/next-server-image
+  - asia-northeast1-docker.pkg.dev/$_PROJECT_ID/next-server-repository/next-server-image
