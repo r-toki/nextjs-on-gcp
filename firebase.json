@@ -1,13 +1,18 @@
 {
   "hosting": {
+    "public": "out",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "**",
+        "regex": "^/me(?:/)?$",
         "run": {
           "serviceId": "next-server",
           "region": "asia-northeast1"
         }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   },

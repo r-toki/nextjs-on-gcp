@@ -6,7 +6,9 @@ steps:
         "-t",
         "asia-northeast1-docker.pkg.dev/$_PROJECT_ID/next-server-repository/next-server-image",
         "--build-arg",
-        "_DOT_ENV_PATH=$_DOT_ENV_PATH",
+        "_BUILD_CMD=$_BUILD_CMD",
+        "--build-arg",
+        "_ENV_PATH=$_ENV_PATH",
         ".",
       ]
 

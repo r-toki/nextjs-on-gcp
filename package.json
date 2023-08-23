@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "env-cmd -f ./env/.env.dev next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "gcp:set": "gcloud config set project ssr-sandbox-395901",
-    "deploy:next:prod": "gcloud builds submit --substitutions=_PROJECT_ID=ssr-sandbox-395901,_DOT_ENV_PATH=./env/.env.prod",
-    "deploy:next:stag": "gcloud builds submit --substitutions=_PROJECT_ID=ssr-sandbox-395901,_DOT_ENV_PATH=./env/.env.stag",
-    "deploy:hosting": "firebase deploy"
+    "build:prod": "env-cmd -f ./env/.env.prod next build",
+    "build:stag": "env-cmd -f ./env/.env.stag next build",
+    "deploy:next:prod": "gcloud builds submit --substitutions=_PROJECT_ID=ssr-sandbox-395901,_BUILD_CMD=build:prod,_ENV_PATH=./env/.env.prod",
+    "deploy:next:stag": "gcloud builds submit --substitutions=_PROJECT_ID=ssr-sandbox-395901,_BUILD_CMD=build:stag,_ENV_PATH=./env/.env.stag",
+    "deploy:hosting:prod": "IS_STATIC=1 yarn build:prod && firebase deploy",
+    "deploy:hosting:stag": "IS_STATIC=1 yarn build:stag && firebase deploy",
+    "deploy:prod": "yarn deploy:next:prod && yarn deploy:hosting:prod",
+    "deploy:stag": "yarn deploy:next:stag && yarn deploy:hosting:stag"
   },
   "dependencies": {
     "@types/node": "20.5.0",
