@@ -7,11 +7,7 @@ export default function Index() {
   return (
     <Fragment>
       {/* client side での title 管理は useTitle で行う */}
-      {isServer() && (
-        <Head>
-          <title>nextjs-on-gcp</title>
-        </Head>
-      )}
+      <Head>{isServer() && <title>nextjs-on-gcp</title>}</Head>
       <SpaRoot />
     </Fragment>
   );

@@ -18,11 +18,7 @@ export default function Me(
   const title = `nextjs-on-gcp | ${props.name}`;
   return (
     <Fragment>
-      {isServer() && (
-        <Head>
-          <title>{title}</title>
-        </Head>
-      )}
+      <Head>{isServer() && <title>{title}</title>}</Head>
       <SpaRoot />
     </Fragment>
   );
